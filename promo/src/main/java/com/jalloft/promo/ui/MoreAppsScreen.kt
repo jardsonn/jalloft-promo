@@ -53,6 +53,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -78,6 +79,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -85,9 +87,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -238,32 +242,15 @@ internal fun MoreAppsContent(
                     WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
                 )
         ) {
+            // Só o "‹ Voltar" fica fixo, como a barra de navegação do iOS; o título grande rola junto
             BackButton(colors, onBack, Modifier.padding(horizontal = pad - 10.dp))
 
-            Column(
-                Modifier.padding(start = pad, end = pad, top = 4.dp, bottom = 6.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                BasicText(
-                    stringResource(R.string.jalloft_promo_eyebrow),
-                    style = mono(monoFontFamily, 11.sp, FontWeight.Bold, colors.accent),
-                )
-                BasicText(
-                    stringResource(R.string.jalloft_promo_title),
-                    style = TextStyle(
-                        color = colors.label,
-                        fontSize = if (wide) 34.sp else 30.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = (-0.025).em,
-                        lineHeight = 1.05.em,
-                    ),
-                )
-            }
+            val header: @Composable () -> Unit = { LargeTitle(pad, wide, colors, monoFontFamily) }
 
             when {
-                apps == null && !failed -> SkeletonContent(columns, pad, featWidth, colors)
+                apps == null && !failed -> SkeletonContent(columns, pad, featWidth, colors, header)
 
-                apps == null -> ErrorState(colors, onRetry)
+                apps == null -> ErrorState(colors, onRetry, header)
 
                 else -> {
                     val featured = if (showFeatured) apps.filter { it.isNew } else emptyList()
@@ -273,6 +260,8 @@ internal fun MoreAppsContent(
                         Modifier.fillMaxSize(),
                         contentPadding = PaddingValues(bottom = 40.dp + bottomInset),
                     ) {
+                        item(key = "title") { header() }
+
                         if (featured.isNotEmpty()) {
                             item(key = "featured-header") {
                                 Row(
@@ -409,6 +398,30 @@ private fun BackButton(colors: PromoColors, onBack: () -> Unit, modifier: Modifi
     }
 }
 
+/** "DO MESMO ESTÚDIO" + "Mais apps para você": o título grande, primeiro item do scroll. */
+@Composable
+private fun LargeTitle(pad: Dp, wide: Boolean, colors: PromoColors, monoFontFamily: FontFamily) {
+    Column(
+        Modifier.padding(start = pad, end = pad, top = 4.dp, bottom = 6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        BasicText(
+            stringResource(R.string.jalloft_promo_eyebrow),
+            style = mono(monoFontFamily, 11.sp, FontWeight.Bold, colors.accent),
+        )
+        BasicText(
+            stringResource(R.string.jalloft_promo_title),
+            style = TextStyle(
+                color = colors.label,
+                fontSize = if (wide) 34.sp else 30.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = tracking(-0.025f),
+                lineHeight = 1.05.em,
+            ),
+        )
+    }
+}
+
 @Composable
 private fun SectionTitle(text: String, colors: PromoColors, modifier: Modifier = Modifier) {
     BasicText(
@@ -418,7 +431,7 @@ private fun SectionTitle(text: String, colors: PromoColors, modifier: Modifier =
             color = colors.label,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            letterSpacing = (-0.02).em,
+            letterSpacing = tracking(-0.02f),
         ),
     )
 }
@@ -535,7 +548,13 @@ private fun AppRow(
                 app.description?.let {
                     BasicText(
                         it,
-                        style = TextStyle(color = colors.label2, fontSize = 13.sp, lineHeight = 1.3.em),
+                        style = TextStyle(
+                            color = colors.label2,
+                            fontSize = 13.sp,
+                            lineHeight = 1.3.em,
+                            // Texto do catálogo pode estar em outro idioma (en num app em árabe)
+                            textDirection = TextDirection.Content,
+                        ),
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                     )
@@ -555,7 +574,8 @@ private fun AppName(name: String, colors: PromoColors, modifier: Modifier = Modi
             color = colors.label,
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
-            letterSpacing = (-0.01).em,
+            letterSpacing = tracking(-0.01f),
+            textDirection = TextDirection.Content,
         ),
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
@@ -663,7 +683,13 @@ private fun Spinner(colors: PromoColors, size: Dp) {
  * conteúdo, com a mesma geometria dos cards e linhas reais.
  */
 @Composable
-private fun SkeletonContent(columns: Int, pad: Dp, featWidth: Dp, colors: PromoColors) {
+private fun SkeletonContent(
+    columns: Int,
+    pad: Dp,
+    featWidth: Dp,
+    colors: PromoColors,
+    header: @Composable () -> Unit,
+) {
     val pulse = rememberInfiniteTransition(label = "skeleton").animateFloat(
         initialValue = 1f,
         targetValue = 0.45f,
@@ -675,6 +701,7 @@ private fun SkeletonContent(columns: Int, pad: Dp, featWidth: Dp, colors: PromoC
     val rows = List(6) { it }.chunked(columns)
 
     Column(Modifier.fillMaxSize()) {
+        header() // mesma posição do título da lista carregada: nada "pula" quando os dados chegam
         Row(
             pulsing
                 .fillMaxWidth()
@@ -780,7 +807,8 @@ private fun SkeletonBar(width: Dp, height: Dp, colors: PromoColors) {
 }
 
 @Composable
-private fun ErrorState(colors: PromoColors, onRetry: () -> Unit) {
+private fun ErrorState(colors: PromoColors, onRetry: () -> Unit, header: @Composable () -> Unit) {
+    header()
     Column(
         Modifier.fillMaxSize().padding(24.dp),
         verticalArrangement = Arrangement.Center,
@@ -832,13 +860,25 @@ private fun Toast(text: String?, colors: PromoColors, onShown: () -> Unit, modif
     }
 }
 
+@Composable
+@ReadOnlyComposable
 private fun mono(family: FontFamily, size: TextUnit, weight: FontWeight, color: Color) = TextStyle(
     fontFamily = family,
     fontSize = size,
     fontWeight = weight,
-    letterSpacing = 0.08.em,
+    letterSpacing = tracking(0.08f),
     color = color,
 )
+
+/**
+ * Espaçamento entre letras do design — só em LTR. O Android não aplica tracking
+ * em escrita cursiva (árabe), mas o Compose mede o texto como se aplicasse: a
+ * largura reservada fica menor que a real e a última letra quebra de linha.
+ */
+@Composable
+@ReadOnlyComposable
+private fun tracking(em: Float): TextUnit =
+    if (LocalLayoutDirection.current == LayoutDirection.Rtl) TextUnit.Unspecified else em.em
 
 /**
  * Fundo do banner: gradiente a 135° + faixa diagonal da cor de destaque,

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">और ऐप्स</string>
+
+    <string name="jalloft_promo_back">वापस</string>
+    <string name="jalloft_promo_eyebrow">उसी स्टूडियो से</string>
+    <string name="jalloft_promo_title">आपके लिए और ऐप्स</string>
+    <string name="jalloft_promo_featured">नए ऐप्स</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="one">%d ऐप</item>
+        <item quantity="other">%d ऐप्स</item>
+    </plurals>
+    <string name="jalloft_promo_all">सभी ऐप्स</string>
+    <string name="jalloft_promo_badge_new">नया</string>
+    <string name="jalloft_promo_get">पाएं</string>
+    <string name="jalloft_promo_open">खोलें</string>
+    <string name="jalloft_promo_footer">सभी Google Play पर मुफ़्त उपलब्ध हैं।</string>
+    <string name="jalloft_promo_toast_play">Google Play खुल रहा है…</string>
+    <string name="jalloft_promo_toast_open">%s खुल रहा है…</string>
+    <string name="jalloft_promo_error">ऐप्स लोड नहीं हो सके।</string>
+    <string name="jalloft_promo_retry">फिर से कोशिश करें</string>
+</resources>

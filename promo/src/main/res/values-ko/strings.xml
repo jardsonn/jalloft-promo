@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">더 많은 앱</string>
+
+    <string name="jalloft_promo_back">뒤로</string>
+    <string name="jalloft_promo_eyebrow">같은 스튜디오의 앱</string>
+    <string name="jalloft_promo_title">이런 앱은 어때요?</string>
+    <string name="jalloft_promo_featured">새로 나온 앱</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="other">앱 %d개</item>
+    </plurals>
+    <string name="jalloft_promo_all">모든 앱</string>
+    <string name="jalloft_promo_badge_new">신규</string>
+    <string name="jalloft_promo_get">받기</string>
+    <string name="jalloft_promo_open">열기</string>
+    <string name="jalloft_promo_footer">모두 Google Play에서 무료로 받을 수 있어요.</string>
+    <string name="jalloft_promo_toast_play">Google Play 여는 중…</string>
+    <string name="jalloft_promo_toast_open">%s 여는 중…</string>
+    <string name="jalloft_promo_error">앱을 불러오지 못했어요.</string>
+    <string name="jalloft_promo_retry">다시 시도</string>
+</resources>

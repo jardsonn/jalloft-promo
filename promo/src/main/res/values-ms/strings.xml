@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">Lebih banyak apl</string>
+
+    <string name="jalloft_promo_back">Kembali</string>
+    <string name="jalloft_promo_eyebrow">DARIPADA STUDIO YANG SAMA</string>
+    <string name="jalloft_promo_title">Lebih banyak apl untuk anda</string>
+    <string name="jalloft_promo_featured">Baharu</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="other">%d apl</item>
+    </plurals>
+    <string name="jalloft_promo_all">Semua apl</string>
+    <string name="jalloft_promo_badge_new">BAHARU</string>
+    <string name="jalloft_promo_get">Dapatkan</string>
+    <string name="jalloft_promo_open">Buka</string>
+    <string name="jalloft_promo_footer">Semuanya percuma di Google Play.</string>
+    <string name="jalloft_promo_toast_play">Membuka Google Play…</string>
+    <string name="jalloft_promo_toast_open">Membuka %s…</string>
+    <string name="jalloft_promo_error">Tidak dapat memuatkan apl.</string>
+    <string name="jalloft_promo_retry">Cuba lagi</string>
+</resources>

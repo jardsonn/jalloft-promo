@@ -3,6 +3,7 @@
 
     <!-- Só o sample: libera HTTP para o `next dev` da máquina (10.0.2.2 no emulador) -->
     <application
+        android:supportsRtl="true"
         android:label="Jalloft Promo"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">Higit pang app</string>
+
+    <string name="jalloft_promo_back">Bumalik</string>
+    <string name="jalloft_promo_eyebrow">MULA SA PAREHONG STUDIO</string>
+    <string name="jalloft_promo_title">Higit pang app para sa iyo</string>
+    <string name="jalloft_promo_featured">Bago</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="one">%d app</item>
+        <item quantity="other">%d app</item>
+    </plurals>
+    <string name="jalloft_promo_all">Lahat ng app</string>
+    <string name="jalloft_promo_badge_new">BAGO</string>
+    <string name="jalloft_promo_get">Kunin</string>
+    <string name="jalloft_promo_open">Buksan</string>
+    <string name="jalloft_promo_footer">Libre lahat sa Google Play.</string>
+    <string name="jalloft_promo_toast_play">Binubuksan ang Google Play…</string>
+    <string name="jalloft_promo_toast_open">Binubuksan ang %s…</string>
+    <string name="jalloft_promo_error">Hindi ma-load ang mga app.</string>
+    <string name="jalloft_promo_retry">Subukan ulit</string>
+</resources>

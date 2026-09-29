@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">Altre app</string>
+
+    <string name="jalloft_promo_back">Indietro</string>
+    <string name="jalloft_promo_eyebrow">DALLO STESSO STUDIO</string>
+    <string name="jalloft_promo_title">Altre app per te</string>
+    <string name="jalloft_promo_featured">Novità</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="one">%d app</item>
+        <item quantity="many">%d app</item>
+        <item quantity="other">%d app</item>
+    </plurals>
+    <string name="jalloft_promo_all">Tutte le app</string>
+    <string name="jalloft_promo_badge_new">NUOVA</string>
+    <string name="jalloft_promo_get">Scarica</string>
+    <string name="jalloft_promo_open">Apri</string>
+    <string name="jalloft_promo_footer">Tutte gratuite su Google Play.</string>
+    <string name="jalloft_promo_toast_play">Apertura di Google Play…</string>
+    <string name="jalloft_promo_toast_open">Apertura di %s…</string>
+    <string name="jalloft_promo_error">Impossibile caricare le app.</string>
+    <string name="jalloft_promo_retry">Riprova</string>
+</resources>

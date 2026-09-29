@@ -8,7 +8,7 @@ atualizar nenhum deles.
 - O app atual some da lista automaticamente.
 - Lançamentos (`isNew` no Studio) num carrossel no topo; o resto numa lista.
 - Botão Baixar → Play Store (com referrer UTM) → volta como **Abrir** se instalou.
-- Claro/escuro, en / pt / es, 1 coluna no celular, 2–3 no tablet.
+- Claro/escuro, en (padrão) / pt / es / fr / it / ko / ar (RTL) / hi / fil / ms, 1 coluna no celular, 2–3 no tablet.
 - Skeleton na primeira abertura; depois abre na hora com o cache do aparelho.
 - Sem dependências além de Compose (sem Coil/Retrofit/Hilt).
 
@@ -29,7 +29,7 @@ dependencyResolutionManagement {
 `app/build.gradle.kts`:
 
 ```kotlin
-implementation("com.github.jardsonn:jalloft-promo:1.0.0")
+implementation("com.github.jardsonn:jalloft-promo:1.0.1")
 ```
 
 ## Uso
@@ -64,6 +64,24 @@ JalloftPromo.onAppClick = { packageName, installed ->
 
 // Rótulos em caixa-alta com a fonte do design (JetBrains Mono), se o app já a tiver
 JalloftPromo.monoFontFamily = FontFamily(Font(R.font.jetbrains_mono_bold, FontWeight.Bold))
+```
+
+## Pro / sem anúncios
+
+A tela só abre quando a pessoa toca num botão ou item de menu, não usa rede de
+anúncios e não rastreia nada — não é anúncio, então **fica visível também para
+quem comprou a remoção de anúncios**. Qualquer divulgação que apareça sozinha
+(card na tela inicial, diálogo, banner dos outros apps) passa a ser anúncio e
+tem que sumir para quem é Pro.
+
+Apps com App Open ad: Baixar/Abrir tiram a pessoa do app, e a volta dispararia
+o anúncio de abertura. Suprima no `onAppClick`:
+
+```kotlin
+MoreAppsScreen(
+    onBack = { navController.popBackStack() },
+    onAppClick = { _, _ -> appOpenAds.suppressNextOpen() },
+)
 ```
 
 ## Medindo

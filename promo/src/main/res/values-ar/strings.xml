@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jalloft_promo_entry">المزيد من التطبيقات</string>
+
+    <string name="jalloft_promo_back">رجوع</string>
+    <string name="jalloft_promo_eyebrow">من الاستوديو نفسه</string>
+    <string name="jalloft_promo_title">المزيد من التطبيقات لك</string>
+    <string name="jalloft_promo_featured">الجديد</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="zero">%d تطبيق</item>
+        <item quantity="one">تطبيق واحد</item>
+        <item quantity="two">تطبيقان</item>
+        <item quantity="few">%d تطبيقات</item>
+        <item quantity="many">%d تطبيقًا</item>
+        <item quantity="other">%d تطبيق</item>
+    </plurals>
+    <string name="jalloft_promo_all">كل التطبيقات</string>
+    <string name="jalloft_promo_badge_new">جديد</string>
+    <string name="jalloft_promo_get">تنزيل</string>
+    <string name="jalloft_promo_open">فتح</string>
+    <string name="jalloft_promo_footer">جميعها مجانية على Google Play.</string>
+    <string name="jalloft_promo_toast_play">جارٍ فتح Google Play…</string>
+    <string name="jalloft_promo_toast_open">جارٍ فتح %s…</string>
+    <string name="jalloft_promo_error">تعذّر تحميل التطبيقات.</string>
+    <string name="jalloft_promo_retry">إعادة المحاولة</string>
+</resources>

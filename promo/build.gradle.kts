@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.jardsonn"
-version = "1.0.0"
+version = "1.0.1"
 
 android {
     namespace = "com.jalloft.promo"
