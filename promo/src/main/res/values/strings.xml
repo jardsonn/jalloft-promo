@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Rótulo para o botão/item de menu que o app usa para abrir a tela -->
+    <string name="jalloft_promo_entry">More apps</string>
+
+    <string name="jalloft_promo_back">Back</string>
+    <string name="jalloft_promo_eyebrow">FROM THE SAME STUDIO</string>
+    <string name="jalloft_promo_title">More apps for you</string>
+    <string name="jalloft_promo_featured">New</string>
+    <plurals name="jalloft_promo_count">
+        <item quantity="one">%d app</item>
+        <item quantity="other">%d apps</item>
+    </plurals>
+    <string name="jalloft_promo_all">All apps</string>
+    <string name="jalloft_promo_badge_new">NEW</string>
+    <string name="jalloft_promo_get">Get</string>
+    <string name="jalloft_promo_open">Open</string>
+    <string name="jalloft_promo_footer">All free on Google Play.</string>
+    <string name="jalloft_promo_toast_play">Opening Google Play…</string>
+    <string name="jalloft_promo_toast_open">Opening %s…</string>
+    <string name="jalloft_promo_error">Couldn\'t load the apps.</string>
+    <string name="jalloft_promo_retry">Try again</string>
+</resources>

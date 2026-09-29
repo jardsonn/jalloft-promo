@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="jalloft_promo_theme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/jalloft_promo_sheet</item>
+    </style>
+    <color name="jalloft_promo_sheet">#1C1C1E</color>
+</resources>

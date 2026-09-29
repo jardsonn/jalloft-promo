@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+        Visibilidade de pacotes (Android 11+): sem isto não dá para saber se o
+        usuário já tem um app instalado, e o botão nunca vira "Abrir".
+        Lista explícita em vez de QUERY_ALL_PACKAGES / intent LAUNCHER — só
+        enxergamos os nossos próprios apps. Ao lançar um app novo, acrescente
+        o package aqui e publique uma versão nova da lib; até lá ele aparece
+        normalmente, só que sempre com "Baixar".
+    -->
+    <queries>
+        <package android:name="com.jalloft.toondance" />
+        <package android:name="com.jalloft.saturndraw" />
+        <package android:name="com.jalloft.ninoclip" />
+        <package android:name="com.jalloft.spectok" />
+        <package android:name="com.jalloft.peladapro" />
+        <package android:name="com.jalloft.elobiblia" />
+        <package android:name="com.jalloft.sortix" />
+        <package android:name="com.jalloft.bbqcalculator" />
+        <package android:name="com.jalloft.stickingit" />
+        <package android:name="com.jalloft.audioextractor" />
+        <package android:name="com.jalloft.aperpixl" />
+        <package android:name="com.jalloft.melodraw" />
+        <package android:name="com.jalloft.cravo" />
+        <package android:name="com.jalloft.disputto" />
+        <package android:name="com.jalloft.redacioneai" />
+        <package android:name="com.jalloft.spectrumx" />
+        <package android:name="com.jalloft.cuppride" />
+    </queries>
+
+    <application>
+        <activity
+            android:name="com.jalloft.promo.MoreAppsActivity"
+            android:exported="false"
+            android:theme="@style/jalloft_promo_theme" />
+    </application>
+</manifest>

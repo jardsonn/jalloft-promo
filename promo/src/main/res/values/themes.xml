@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fundo já na cor da tela: sem flash branco/preto ao abrir -->
+    <style name="jalloft_promo_theme" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/jalloft_promo_sheet</item>
+    </style>
+    <color name="jalloft_promo_sheet">#F2F2F7</color>
+</resources>

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "module": "promo",
+  "defaultSet": "ion",
+  "defaultVariant": "outline",
+  "icons": {},
+  "suggested": {
+    "voltar": {
+      "id": "ion:chevron-back-outline",
+      "resource": "jalloft_promo_ic_back",
+      "source": "default-set",
+      "date": "2026-09-29T22:14:23.719Z",
+      "usedIn": "botão ‹ Voltar no topo",
+      "note": "id informado (design ou revisão), sem busca"
+    }
+  }
+}
